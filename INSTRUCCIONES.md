@@ -76,14 +76,25 @@ Recargá la página y aparece solo.
 
 | Escribí la categoría igual a: | Badge |
 |---|---|
-| `Clásicos` | Ámbar claro |
-| `De Autor` | Dorado |
-| `Nacionales` | Rojo/rosa (fernet, gancia...) |
-| `Cervezas` | Amarillo |
-| `Vinos` | Fucsia |
-| `Sin Alcohol` | Verde |
+| `Tragos` | Dorado |
+| `Licuados` | Celeste/turquesa |
+| `Especiales` | Rosa/fucsia |
 
-Otra categoría → badge gris. Para darle color a una nueva: editá `BADGE_COLORS` en `src/app/components/menu-card/menu-card.ts`.
+Otra categoría → badge gris. Para darle color a una nueva: editá el mapa `BADGE_COLORS` en `src/app/components/menu-card/menu-card.ts`.
+
+### 🔀 Las dos tarjetas de filtro (Con alcohol / Sin alcohol)
+
+Arriba de la carta hay dos botones grandes: **🍹 Con alcohol** y **🥤 Sin alcohol**.
+
+La regla: **`Licuados` entra en "Sin alcohol"; todo lo demás (`Tragos`, `Especiales`) entra en "Con alcohol".** Si mañana agregás otra categoría sin alcohol, sumala al conjunto `SIN_ALCOHOL` en `src/app/pages/menu-page/menu-page.ts`.
+
+### 🆕 Marcar un trago como "Nuevo"
+
+Agregale `"tag": "Nuevo"` al trago en `menu.json` — aparece como etiqueta roja en la esquina de la foto.
+
+### 📑 Secciones de la carta
+
+La página agrupa los tragos en secciones con título dorado: **Tragos → Licuados → Daikiris y Especiales**. El orden y los nombres se definen en la constante `SECTIONS` de `src/app/pages/menu-page/menu-page.ts`.
 
 ---
 
@@ -96,11 +107,13 @@ En `public/menu.json`, sección `config`:
   "barName": "Alto Trago",
   "tagline": "Barra de tragos móvil",
   "currency": "$",
-  "logoPath": "logo/altoTragoLogo.png",
+  "logoPath": "logo/altoTragoLogo1.jpg",
   "heroImage": "/assets/tragos/hero.jpg",
   "footerMessage": "¡Gracias por tu visita!"
 }
 ```
+
+> 📌 El logo se conecta SOLO con `logoPath`: apuntalo al nombre del archivo que esté en `public/logo/`.
 
 ---
 
@@ -109,20 +122,20 @@ En `public/menu.json`, sección `config`:
 - Carpeta: `public/assets/tragos/`
 - **Foto grande** (hero): se llama `hero.jpg` — mientras no exista, esa sección queda oculta sola.
 - **Tarjetas**: horizontal, se ven en proporción 4:3, mínimo 800x600 px.
-- Comprimí las fotos para que carguen rápido con QR: https://squoosh.app (<300 KB). El logo también conviene comprimirlo (el actual pesa ~2 MB).
+- Comprimí las fotos para que carguen rápido con QR: https://squoosh.app (<300 KB). El logo ya está comprimido (188 KB ✅).
 
 ---
 
-## 6. Colores y tipografías
+## 6. Colores y tipografía
 
 Todo sale de `src/styles.css`, sección `@theme`:
 
 ```css
 --color-gold-200 ... --color-gold-600;   /* dorado: brillos, precios, marcos */
---font-display: 'Bebas Neue'             /* precios y títulos de sección */
---font-serif: 'Playfair Display'         /* nombres de tragos */
---font-sans: 'Inter'                     /* textos generales */
+--font-sans: -apple-system, 'Inter', ... /* estilo Apple: en iPhone usa la fuente nativa de Apple */
 ```
+
+La tipografía de todo el sitio es estilo Apple/iPhone: en iPhone/iPad/Mac se ve la fuente nativa de Apple (San Francisco) automáticamente; en Android y PC se usa Inter, que es casi idéntica.
 
 Sacá los códigos de color de tu logo en https://imagecolorpicker.com
 

@@ -8,7 +8,7 @@
   <img
     [src]="logoPath()"
     alt="Logo de {{ barName() }}"
-    class="relative w-44 object-contain drop-shadow-[0_12px_45px_rgba(212,160,60,0.35)] transition-transform duration-500 hover:scale-[1.03] sm:w-60"
+    class="aspect-square size-36 rounded-full object-cover shadow-[0_12px_45px_rgba(212,160,60,0.35)] ring-2 ring-gold-500/70 transition-transform duration-500 hover:scale-[1.03] sm:size-44"
     [class.hidden]="!logoOk()"
     (error)="logoOk.set(false)"
   />

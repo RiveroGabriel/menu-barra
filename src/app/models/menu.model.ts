@@ -13,6 +13,7 @@ export interface Drink {
   price: number;
   category?: string;
   image?: string;
+  tag?: string;
 }
 
 export interface MenuData {

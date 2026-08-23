@@ -3,80 +3,128 @@
     "barName": "Alto Trago",
     "tagline": "Barra de tragos móvil",
     "currency": "$",
-    "logoPath": "logo/altoTragoLogo.png",
+    "logoPath": "logo/altoTragoLogo1.jpg",
     "heroImage": "/assets/tragos/hero.jpg",
     "footerMessage": "¡Gracias por tu visita!"
   },
   "drinks": [
     {
-      "name": "Caipiriña",
-      "description": "Cachaça, limón, azúcar y hielo picado",
+      "name": "Fernet Branca",
+      "description": "El clásico de la casa, bien frío",
+      "price": 8000,
+      "category": "Tragos"
+    },
+    {
+      "name": "Gancia",
+      "description": "Gancia bien fría",
       "price": 7000,
-      "category": "Clásicos",
-      "image": "/assets/tragos/caipirinha.jpg"
-    },
-    {
-      "name": "Fernet Cola",
-      "description": "Fernet y cola, con hielo y un toque de limón",
-      "price": 5500,
-      "category": "Nacionales",
-      "image": "/assets/tragos/fernet-cola.jpg"
-    },
-    {
-      "name": "Gancia Spritz",
-      "description": "Gancia, 7up o soda y rodajas de limón",
-      "price": 6000,
-      "category": "Nacionales",
+      "category": "Tragos",
       "image": "/assets/tragos/gancia-spritz.jpg"
     },
     {
-      "name": "Margarita",
-      "description": "Tequila, triple sec, limón y sal en el borde",
-      "price": 8500,
-      "category": "Clásicos",
-      "image": "/assets/tragos/margarita.jpg"
+      "name": "Vodka con Sprite",
+      "description": "Vodka con Sprite",
+      "price": 8000,
+      "category": "Tragos",
+      "image": "/assets/tragos/VodkaConSprite.jpg"
     },
     {
-      "name": "Mojito",
-      "description": "Ron blanco, hierbabuena, limón, azúcar y soda",
-      "price": 7500,
-      "category": "Clásicos",
-      "image": "/assets/tragos/mojito.jpg"
-    },
-    {
-      "name": "Negroni",
-      "description": "Gin, campari y vermut rojo",
-      "price": 10000,
-      "category": "De Autor",
-      "image": "/assets/tragos/negroni.jpg"
-    },
-    {
-      "name": "Alto Trago Especial",
-      "description": "El trago insignia de la casa. Preguntá por el secreto",
-      "price": 9500,
-      "category": "De Autor",
-      "image": "/assets/tragos/especial.jpg"
-    },
-    {
-      "name": "Cerveza Artesanal IPA",
-      "description": "Pint 473 ml, notas cítricas y amargas",
-      "price": 6000,
-      "category": "Cervezas",
-      "image": "/assets/tragos/cerveza-ipa.jpg"
-    },
-    {
-      "name": "Vino Tinto Reserva",
-      "description": "Cabernet sauvignon · copa",
-      "price": 6500,
-      "category": "Vinos",
-      "image": "/assets/tragos/vino-tinto.jpg"
-    },
-    {
-      "name": "Limonada de la Casa",
-      "description": "Con hierbabuena y jengibre · sin alcohol",
+      "name": "Vino Tinto con gaseosa",
+      "description": "Vino tinto con gaseosa",
       "price": 4000,
-      "category": "Sin Alcohol",
-      "image": "/assets/tragos/limonada.jpg"
+      "category": "Tragos"
+    },
+    {
+      "name": "Vino Dilema Dulce",
+      "description": "Dulce, con frutos rojos y Sprite",
+      "price": 7000,
+      "category": "Tragos"
+    },
+    {
+      "name": "Daiquiri de Frutilla",
+      "description": "Daiquiri de frutilla",
+      "price": 8000,
+      "category": "Tragos"
+    },
+    {
+      "name": "Daiquiri de Ananá y Durazno",
+      "description": "Daiquiri de ananá o durazno",
+      "price": 7000,
+      "category": "Tragos"
+    },
+    {
+      "name": "Vino Colón",
+      "description": "Con frutos rojos y Sprite opcional",
+      "price": 9000,
+      "category": "Tragos"
+    },
+    {
+      "name": "Vodkapaff",
+      "description": "Caramelos Flynn Paff, vodka y Sprite",
+      "price": 8000,
+      "category": "Tragos"
+    },
+    {
+      "name": "Campari",
+      "description": "Naranja exprimida, gaseosa pomelo o Sprite",
+      "price": 8000,
+      "category": "Tragos",
+      "tag": "Nuevo"
+    },
+    {
+      "name": "Cuba Libre",
+      "description": "Ron blanco, jugo de limón y coca cola",
+      "price": 8000,
+      "category": "Tragos"
+    },
+    {
+      "name": "Licuado de Frutilla",
+      "description": "Leche opcional, azúcar, salsa opcional y hielo",
+      "price": 6000,
+      "category": "Licuados"
+    },
+    {
+      "name": "Licuado de Durazno",
+      "description": "Leche opcional, azúcar, salsa opcional y hielo",
+      "price": 5000,
+      "category": "Licuados"
+    },
+    {
+      "name": "Licuado de Ananá",
+      "description": "Leche opcional, azúcar, salsa opcional y hielo",
+      "price": 5000,
+      "category": "Licuados"
+    },
+    {
+      "name": "Licuado de Banana",
+      "description": "Leche opcional, azúcar, salsa opcional y hielo",
+      "price": 5000,
+      "category": "Licuados"
+    },
+    {
+      "name": "Daikiri de Frutilla",
+      "description": "Daikiri de frutilla",
+      "price": 6000,
+      "category": "Especiales"
+    },
+    {
+      "name": "Daikiri de Ananá",
+      "description": "Daikiri de ananá",
+      "price": 5000,
+      "category": "Especiales"
+    },
+    {
+      "name": "Daikiri de Durazno",
+      "description": "Daikiri de durazno",
+      "price": 5000,
+      "category": "Especiales"
+    },
+    {
+      "name": "Frappé de Oreo",
+      "description": "Oreos, leche, azúcar, salsa opcional, crema batida y hielo",
+      "price": 6000,
+      "category": "Especiales",
+      "tag": "Nuevo"
     }
   ]
 }

@@ -1,27 +1,33 @@
-FOTOS DE LOS TRAGOS
-===================
+CÓMO CAMBIAR O AGREGAR UNA FOTO DE UN TRAGO
+============================================
 
-Subí acá las fotos (reales o generadas con IA) con estos nombres exactos:
+1. Guardá la foto acá, en esta misma carpeta (public/assets/tragos/)
+   Nombrala simple, sin espacios ni tildes. Ej: fernet.jpg
 
-  hero.jpg            -> foto grande del trago destacado (sección principal)
-  caipirinha.jpg
-  fernet-cola.jpg
-  gancia-spritz.jpg
-  margarita.jpg
-  mojito.jpg
-  negroni.jpg
-  especial.jpg
-  cerveza-ipa.jpg
-  vino-tinto.jpg
-  limonada.jpg
+2. Abrí el archivo public/menu.json
 
-Los nombres tienen que coincidir con el campo "image" de cada trago
-en public/menu.json (si cambiás uno, actualizá el otro).
+3. Buscá el trago que querés (por su "name")
 
-RECOMENDADO:
-- Formato JPG horizontal.
-- Tragos en copa: mínimo 800x600 px. Hero: ideal 1600x900 px o más.
-- Peso: menos de 300 KB por foto para que cargue rápido con QR.
-  Podés comprimirlas gratis en https://squoosh.app
+4. En el campo "image" de ese trago, escribí:
+   "/assets/tragos/fernet.jpg"
+   (con el nombre exacto que le pusiste al archivo)
 
-Mientras falte una foto, la tarjeta muestra un fondo elegante con el nombre del trago.
+5. Guardá y recargá la página (F5). Listo.
+
+NOTAS:
+- Si un trago NO tiene campo "image", se ve un fondo elegante con 🍸.
+  Está bien dejarlo así hasta que tengas la foto.
+- Formato ideal: JPG horizontal, menos de 300 KB.
+- La foto grande principal se llama: hero.jpg
+
+FOTOS QUE YA ESTÁN CONECTADAS:
+- gancia-spritz.jpg   -> Gancia
+- VodkaConSprite.jpg  -> Vodka con Sprite
+
+NOMBRES SUGERIDOS PARA LAS QUE FALTAN:
+fernet-branca.jpg, vino-tinto-gaseosa.jpg, vino-dilema.jpg,
+daiquiri-frutilla.jpg, daiquiri-anana-durazno.jpg, vino-colon.jpg,
+vodkapaff.jpg, campari.jpg, cuba-libre.jpg,
+licuado-frutilla.jpg, licuado-durazno.jpg, licuado-anana.jpg,
+licuado-banana.jpg, daikiri-frutilla.jpg, daikiri-anana.jpg,
+daikiri-durazno.jpg, frappe-oreo.jpg, hero.jpg

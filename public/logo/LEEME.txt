@@ -1,15 +1,11 @@
-COLOCÁ TU LOGO ACÁ
-==================
+TU LOGO
+=======
 
-1. Poné tu imagen en esta carpeta con el nombre: logo.png
-   También sirve: logo.svg o logo.webp (si usás otro nombre,
-   actualizá "logoPath" en public/menu.json).
+Archivo actual: altoTragoLogo1.jpg (ya conectado y funcionando).
 
-2. Recomendado:
-   - PNG con fondo transparente, cuadrado o casi cuadrado.
-   - Mínimo 512x512 px para que se vea nítido en celulares.
-   - Pesarlo menos de 500 KB para que cargue rápido con QR.
+Para cambiarlo por otra imagen:
+1. Poné el archivo nuevo en esta carpeta.
+2. Abrí public/menu.json y cambiá "logoPath" con el nombre del archivo.
+   Ejemplo: "logoPath": "logo/mi-logo-nuevo.png"
 
-3. No hace falta tocar nada más: la página lo detecta sola.
-
-Mientras no exista logo.png, la página muestra un ícono de trago 🍸 como marca de agua.
+Recomendado: menos de 300 KB, cuadrado, fondo transparente si es PNG.

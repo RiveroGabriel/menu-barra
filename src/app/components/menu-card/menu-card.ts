@@ -1,14 +1,11 @@
 import { Component, computed, input, linkedSignal } from '@angular/core';
 import { Drink } from '../../models/menu.model';
 
-/** Colores de badge según la categoría del trago */
+/** Colores de badge según la categoría del trago (sólidos, texto oscuro) */
 const BADGE_COLORS: Record<string, string> = {
-  'Clásicos': 'bg-amber-500/20 text-amber-300 border-amber-400/40',
-  'De Autor': 'bg-gold-500/20 text-gold-300 border-gold-400/50',
-  'Nacionales': 'bg-rose-500/20 text-rose-300 border-rose-400/40',
-  'Cervezas': 'bg-yellow-500/20 text-yellow-200 border-yellow-400/40',
-  'Vinos': 'bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-400/40',
-  'Sin Alcohol': 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40',
+  'Tragos': 'bg-bronze-500 text-zinc-950 border-transparent',
+  'Licuados': 'bg-blush-400 text-zinc-950 border-transparent',
+  'Especiales': 'bg-coral-400 text-zinc-950 border-transparent',
 };
 
 const BADGE_DEFAULT = 'bg-zinc-700/60 text-zinc-300 border-zinc-500/40';

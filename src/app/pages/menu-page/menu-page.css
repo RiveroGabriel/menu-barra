@@ -1,17 +1,23 @@
-/* Brillos dorados decorativos del fondo */
+/* Brillos decorativos del fondo: rosa empolvado arriba, dorado sutil abajo */
 
 .top-glow {
-  background: radial-gradient(
-    55% 55% at 50% 0%,
-    color-mix(in oklab, var(--color-gold-500) 16%, transparent),
-    transparent 70%
-  );
+  background:
+    radial-gradient(
+      50% 50% at 50% 0%,
+      color-mix(in oklab, var(--color-blush-400) 12%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      35% 35% at 15% 0%,
+      color-mix(in oklab, var(--color-gold-500) 8%, transparent),
+      transparent 70%
+    );
 }
 
 .bottom-glow {
   background: radial-gradient(
     40% 40% at 85% 100%,
-    color-mix(in oklab, var(--color-gold-600) 8%, transparent),
+    color-mix(in oklab, var(--color-blush-400) 7%, transparent),
     transparent 70%
   );
 }

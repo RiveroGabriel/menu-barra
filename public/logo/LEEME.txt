@@ -1,0 +1,15 @@
+COLOCÁ TU LOGO ACÁ
+==================
+
+1. Poné tu imagen en esta carpeta con el nombre: logo.png
+   También sirve: logo.svg o logo.webp (si usás otro nombre,
+   actualizá "logoPath" en public/menu.json).
+
+2. Recomendado:
+   - PNG con fondo transparente, cuadrado o casi cuadrado.
+   - Mínimo 512x512 px para que se vea nítido en celulares.
+   - Pesarlo menos de 500 KB para que cargue rápido con QR.
+
+3. No hace falta tocar nada más: la página lo detecta sola.
+
+Mientras no exista logo.png, la página muestra un ícono de trago 🍸 como marca de agua.

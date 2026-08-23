@@ -1,0 +1,16 @@
+{
+  // Evita avisos falsos de CSS en proyectos con Tailwind v4 (@theme, color-mix, etc.)
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+
+  // Formato automático al guardar con Prettier
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}

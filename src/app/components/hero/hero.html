@@ -1,0 +1,14 @@
+<!-- Esta sección aparece sola cuando subas public/assets/tragos/hero.jpg.
+     Mientras no exista la foto, queda oculta y no ocupa espacio. -->
+<section
+  class="relative h-[55vh] min-h-[320px] max-h-[560px] w-full overflow-hidden sm:h-[65vh]"
+  [class.hidden]="!imageOk()"
+>
+  <img
+    [src]="image()"
+    alt="Trago destacado de la casa"
+    class="absolute inset-0 size-full object-cover"
+    (error)="imageOk.set(false)"
+  />
+  <div class="hero-fade absolute inset-0" aria-hidden="true"></div>
+</section>

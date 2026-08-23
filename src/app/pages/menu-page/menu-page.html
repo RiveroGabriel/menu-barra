@@ -1,0 +1,71 @@
+<div class="top-glow pointer-events-none fixed inset-x-0 top-0 z-0 h-[28rem]"></div>
+<div class="bottom-glow pointer-events-none fixed inset-x-0 bottom-0 z-0 h-96"></div>
+
+<div class="relative">
+  <!-- Logo -->
+  <app-header
+    [barName]="config()?.barName ?? 'Alto Trago'"
+    [logoPath]="config()?.logoPath ?? 'logo/altoTragoLogo.png'"
+  />
+
+  @switch (state()) {
+    @case ('loading') {
+      <main class="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <div class="h-[55vh] min-h-[320px] animate-pulse rounded-none bg-zinc-900/60"></div>
+        <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+            <div class="aspect-[4/3] animate-pulse rounded-2xl bg-zinc-900/60"></div>
+          }
+        </div>
+      </main>
+    }
+
+    @case ('error') {
+      <main class="mx-auto max-w-md px-4 pb-20">
+        <div class="rounded-2xl border border-red-500/30 bg-red-500/10 p-6 text-center shadow-xl shadow-black/40 backdrop-blur">
+          <p class="font-serif text-lg font-medium text-red-300">No se pudo cargar el menú</p>
+          <p class="mt-2 text-sm leading-relaxed text-red-200/70">
+            Revisá que <code class="rounded bg-black/40 px-1.5 py-0.5">public/menu.json</code> exista
+            y sea un JSON válido (sin comas de más ni comillas faltantes).
+          </p>
+        </div>
+      </main>
+    }
+
+    @case ('ready') {
+      <!-- Foto grande del trago destacado (oculta hasta que subas hero.jpg) -->
+      <app-hero [image]="config()?.heroImage ?? '/assets/tragos/hero.jpg'" />
+
+      <main class="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
+        <!-- Separador "La Carta" -->
+        <div class="mt-12 mb-10 flex items-center gap-4 sm:mt-16" aria-hidden="true">
+          <span class="h-px flex-1 bg-gradient-to-r from-transparent via-gold-500/25 to-gold-500/50"></span>
+          <span class="text-gold-500/70 text-xs">✦</span>
+          <h2 class="font-display text-3xl tracking-[0.3em] text-gold-400 uppercase">La Carta</h2>
+          <span class="text-gold-500/70 text-xs">✦</span>
+          <span class="h-px flex-1 bg-gradient-to-l from-transparent via-gold-500/25 to-gold-500/50"></span>
+        </div>
+
+        <!-- Tarjetas -->
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+          @for (drink of drinks(); track drink.name) {
+            <app-menu-card [drink]="drink" [currency]="config()?.currency ?? '$'" />
+          }
+        </div>
+
+        @if (drinks().length === 0) {
+          <p class="mt-6 text-center text-sm text-zinc-500">
+            Todavía no hay tragos cargados. Agregalos en <code>public/menu.json</code>.
+          </p>
+        }
+      </main>
+    }
+  }
+
+  <footer class="border-t border-white/[0.06] py-10 text-center">
+    <p class="font-serif italic text-zinc-400">{{ config()?.footerMessage ?? '¡Gracias por tu visita!' }}</p>
+    <p class="mt-2 text-xs uppercase tracking-[0.3em] text-zinc-600">
+      {{ config()?.barName ?? 'Alto Trago' }} · Barra de tragos móvil
+    </p>
+  </footer>
+</div>

@@ -1,0 +1,45 @@
+/* Brillos dorados decorativos del fondo */
+
+.top-glow {
+  background: radial-gradient(
+    55% 55% at 50% 0%,
+    color-mix(in oklab, var(--color-gold-500) 16%, transparent),
+    transparent 70%
+  );
+}
+
+.bottom-glow {
+  background: radial-gradient(
+    40% 40% at 85% 100%,
+    color-mix(in oklab, var(--color-gold-600) 8%, transparent),
+    transparent 70%
+  );
+}
+
+/* Entrada suave y escalonada de las tarjetas */
+
+app-menu-card {
+  animation: card-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+app-menu-card:nth-child(1) { animation-delay: 0.04s; }
+app-menu-card:nth-child(2) { animation-delay: 0.08s; }
+app-menu-card:nth-child(3) { animation-delay: 0.12s; }
+app-menu-card:nth-child(4) { animation-delay: 0.16s; }
+app-menu-card:nth-child(5) { animation-delay: 0.2s; }
+app-menu-card:nth-child(6) { animation-delay: 0.24s; }
+app-menu-card:nth-child(7) { animation-delay: 0.28s; }
+app-menu-card:nth-child(8) { animation-delay: 0.32s; }
+app-menu-card:nth-child(9) { animation-delay: 0.36s; }
+app-menu-card:nth-child(n + 10) { animation-delay: 0.4s; }
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

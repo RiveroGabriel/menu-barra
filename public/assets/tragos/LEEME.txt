@@ -1,0 +1,27 @@
+FOTOS DE LOS TRAGOS
+===================
+
+Subí acá las fotos (reales o generadas con IA) con estos nombres exactos:
+
+  hero.jpg            -> foto grande del trago destacado (sección principal)
+  caipirinha.jpg
+  fernet-cola.jpg
+  gancia-spritz.jpg
+  margarita.jpg
+  mojito.jpg
+  negroni.jpg
+  especial.jpg
+  cerveza-ipa.jpg
+  vino-tinto.jpg
+  limonada.jpg
+
+Los nombres tienen que coincidir con el campo "image" de cada trago
+en public/menu.json (si cambiás uno, actualizá el otro).
+
+RECOMENDADO:
+- Formato JPG horizontal.
+- Tragos en copa: mínimo 800x600 px. Hero: ideal 1600x900 px o más.
+- Peso: menos de 300 KB por foto para que cargue rápido con QR.
+  Podés comprimirlas gratis en https://squoosh.app
+
+Mientras falte una foto, la tarjeta muestra un fondo elegante con el nombre del trago.

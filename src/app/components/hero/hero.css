@@ -1,0 +1,15 @@
+/* Fallback mientras no haya foto: gradiente oscuro con brillo dorado */
+.hero-fallback {
+  background:
+    radial-gradient(
+      80% 80% at 50% 30%,
+      color-mix(in oklab, var(--color-gold-500) 14%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #18181b 0%, #09090b 100%);
+}
+
+/* Fundido inferior para que la foto se integre al fondo negro */
+.hero-fade {
+  background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.55) 60%, #09090b 100%);
+}

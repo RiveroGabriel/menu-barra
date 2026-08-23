@@ -1,0 +1,15 @@
+<header class="relative flex justify-center pt-12 pb-10 sm:pt-16 sm:pb-12">
+  <!-- Aura dorada suave detrás del logo -->
+  <div
+    class="absolute top-6 size-56 rounded-full bg-gold-500/15 blur-3xl sm:size-72"
+    aria-hidden="true"
+  ></div>
+
+  <img
+    [src]="logoPath()"
+    alt="Logo de {{ barName() }}"
+    class="relative w-44 object-contain drop-shadow-[0_12px_45px_rgba(212,160,60,0.35)] transition-transform duration-500 hover:scale-[1.03] sm:w-60"
+    [class.hidden]="!logoOk()"
+    (error)="logoOk.set(false)"
+  />
+</header>

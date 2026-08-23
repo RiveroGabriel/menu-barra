@@ -16,7 +16,6 @@ const BADGE_DEFAULT = 'bg-zinc-700/60 text-zinc-300 border-zinc-500/40';
 @Component({
   selector: 'app-menu-card',
   templateUrl: './menu-card.html',
-  styleUrl: './menu-card.css',
 })
 export class MenuCardComponent {
   readonly drink = input.required<Drink>();

@@ -1,5 +1,0 @@
-/* Fundido inferior para que la foto se integre al fondo negro */
-
-.hero-fade {
-  background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.55) 60%, #09090b 100%);
-}

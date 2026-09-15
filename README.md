@@ -1,59 +1,158 @@
-# MenuBarra
+# Alto Trago - Menú digital
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
+Menú web para barra de tragos móvil. Hecho con **Angular 21** + **Tailwind CSS**.
 
-## Development server
+La idea es que sea lo más fácil posible de mantener: **casi todo se edita desde `public/assets/menu.json` y la carpeta `public/assets/tragos/`**.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Cómo levantar el proyecto local
 
 ```bash
-ng generate component component-name
+npm install
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Abrir en el navegador: `http://localhost:4200/`
+
+---
+
+## Cómo cambiar el logo
+
+1. Reemplazá la imagen en: `public/assets/tragos/logo.jpg`
+2. Si querés usar otro nombre, editá `public/assets/menu.json` y cambiá:
+   ```json
+   "logo": "assets/tragos/tu-logo.jpg"
+   ```
+
+---
+
+## Cómo agregar o editar un trago/licuado
+
+1. Abrí `public/assets/menu.json`.
+2. Dentro del array `items`, agregá un objeto como este:
+
+```json
+{
+  "id": 20,
+  "name": "Nombre del trago",
+  "description": "Descripción corta",
+  "price": 7500,
+  "category": "Tragos",
+  "new": false
+}
+```
+
+**Reglas:**
+- `id`: tiene que ser único (no se puede repetir).
+- `category`: puede ser `"Tragos"`, `"Licuados"` o `"Especiales"`.
+- `new`: si lo ponés `true`, aparece en el botón **Nuevos**.
+- `image`: si querés que tenga foto, agregá el campo. Si no, se ve el fondo con 🍸.
+
+---
+
+## Cómo agregar una foto a un trago
+
+1. Guardá la foto en: `public/assets/tragos/`
+2. Nombrala simple, **sin espacios ni tildes**. Ejemplos:
+   - `fernet.jpg`
+   - `vodka-sprite.jpg`
+   - `licuado-frutilla.jpg`
+3. En `public/assets/menu.json`, buscá el trago y agregale:
+   ```json
+   "image": "assets/tragos/fernet.jpg"
+   ```
+4. Guardá y recargá la página (`F5`).
+
+> **Importante:** el nombre del archivo en `image` tiene que ser **exactamente igual** al que pusiste en la carpeta, incluyendo mayúsculas.
+
+---
+
+## Cómo marcar algo como "Nuevo"
+
+En `public/assets/menu.json`, agregale `"new": true` al trago:
+
+```json
+{
+  "id": 10,
+  "name": "Campari",
+  "description": "...",
+  "price": 8000,
+  "category": "Tragos",
+  "new": true
+}
+```
+
+---
+
+## Cómo cambiar los botones de filtro
+
+Los 3 botones actuales son: **Tragos**, **Licuados**, **Nuevos**.
+
+Si querés agregar uno más (por ejemplo "Especiales"), editá:
+
+`src/app/menu/menu.component.ts`
+
+```ts
+filtros: Filtro[] = ['Tragos', 'Licuados', 'Especiales', 'Nuevos'];
+```
+
+Y en `menu.model.ts` asegurate de que el tipo permita esa categoría:
+
+```ts
+category: 'Tragos' | 'Licuados' | 'Especiales';
+```
+
+---
+
+## Cómo cambiar colores o estilos
+
+La paleta está en `src/styles.css`. Ahí se definen los colores:
+
+- `blush-400`: rosa principal `#e8879a`
+- `gold-500`: dorado `#d4a03c`
+- `bronze-500`: dorado viejo `#c9a227`
+- `coral-400`: coral `#f0917f`
+
+El diseño de las tarjetas y botones está todo en `src/app/menu/menu.component.html`.
+
+---
+
+## Cómo hacer un build para subir a internet
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
+Los archivos listos para subir quedan en: `dist/menu-barra/browser/`
 
-To build the project run:
+---
 
-```bash
-ng build
+## Estructura del proyecto (resumida)
+
+```
+src/app/
+  app.ts              ← componente raíz
+  app.routes.ts       ← ruta principal que carga el menú
+  app.config.ts       ← config básica de Angular
+  menu/
+    menu.component.ts    ← UN SOLO componente con todo
+    menu.component.html  ← el HTML del menú
+    menu.service.ts      ← lee el menu.json
+    menu.model.ts        ← define la forma del menú
+
+public/
+  assets/
+    menu.json         ← acá editás los tragos y el logo
+    tragos/           ← acá van las fotos
+      logo.jpg
+      gancia-spritz.jpg
+      VodkaConSprite.jpg
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Si algo no se ve
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Si una foto no aparece, revisá que el nombre en `image` sea exactamente igual al archivo.
+- Si el menú no carga, abrí la consola del navegador (`F12`) y fijate si `menu.json` tiene un error de sintaxis (coma de más, llave faltante, etc.).

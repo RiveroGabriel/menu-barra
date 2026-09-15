@@ -1,0 +1,159 @@
+<div class="relative min-h-screen overflow-x-hidden bg-[#0a0a0a] text-zinc-100">
+  <!-- Fondos decorativos (no se tocan) -->
+  <div
+    class="pointer-events-none fixed inset-x-0 top-0 z-0 h-[28rem]"
+    style="background: radial-gradient(50% 50% at 50% 0%, rgba(232,135,154,0.12), transparent 70%), radial-gradient(35% 35% at 15% 0%, rgba(212,160,60,0.08), transparent 70%);"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none fixed inset-x-0 bottom-0 z-0 h-96"
+    style="background: radial-gradient(40% 40% at 85% 100%, rgba(232,135,154,0.07), transparent 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10">
+    <!-- HEADER: logo del bar -->
+    <!-- CAMBIAR: la ruta del logo se edita en public/assets/menu.json, campo "logo" -->
+    <header class="relative flex justify-center pt-12 pb-8 sm:pt-16 sm:pb-10">
+      <div class="absolute top-6 size-56 rounded-full bg-gold-500/15 blur-3xl sm:size-72" aria-hidden="true"></div>
+      <img
+        [src]="config().logo"
+        alt="Logo de {{ config().barName }}"
+        class="relative aspect-square size-36 rounded-full object-cover shadow-[0_12px_45px_rgba(212,160,60,0.35)] ring-2 ring-gold-500/70 transition-transform duration-500 hover:scale-[1.03] sm:size-44"
+        [class.hidden]="!logoOk()"
+        (error)="logoOk.set(false)"
+      />
+    </header>
+
+    <!-- Loading -->
+    @if(cargando()) {
+      <main class="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <div class="h-8 w-3/4 max-w-md animate-pulse rounded bg-zinc-800 mx-auto"></div>
+        <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          @for(i of [1,2,3,4,5,6]; track i) {
+            <div class="aspect-[4/3] animate-pulse rounded-2xl bg-zinc-800"></div>
+          }
+        </div>
+      </main>
+    }
+
+    <!-- Error -->
+    @if(error()) {
+      <main class="mx-auto max-w-md px-4 pb-20">
+        <div class="rounded-2xl border border-red-500/30 bg-red-500/10 p-6 text-center shadow-xl shadow-black/40 backdrop-blur">
+          <p class="text-lg font-semibold text-red-300">{{ error() }}</p>
+          <p class="mt-2 text-sm text-red-200/70">
+            Revisá que <code class="rounded bg-black/40 px-1.5 py-0.5">public/assets/menu.json</code> exista y sea válido.
+          </p>
+        </div>
+      </main>
+    }
+
+    <!-- Contenido principal -->
+    @if(!cargando() && !error()) {
+      <main class="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
+        <!-- Título principal -->
+        <!-- CAMBIAR: este texto se puede cambiar en menu.json, campo "barName" -->
+        <h1 class="font-hand mt-6 mb-8 text-center text-5xl leading-none font-bold text-zinc-100 sm:text-6xl">
+          {{ config().barName }}
+        </h1>
+
+        <!-- Los 3 botones de filtro -->
+        <!-- CAMBIAR: si querés agregar más botones (ej: "Especiales"), agregalos en menu.component.ts en el array "filtros" -->
+        <div class="mb-12 flex flex-wrap justify-center gap-2 sm:gap-2.5">
+          @for(f of filtros; track $index) {
+            <button
+              type="button"
+              (click)="cambiarFiltro(f)"
+              class="rounded-full border px-5 py-2 text-sm font-semibold tracking-wide transition-all duration-200 active:scale-95"
+              [class.bg-gold-500]="f === filtroActivo()"
+              [class.border-gold-500]="f === filtroActivo()"
+              [class.text-zinc-950]="f === filtroActivo()"
+              [class.shadow-md]="f === filtroActivo()"
+              [class.shadow-gold-500/20]="f === filtroActivo()"
+              [class.border-blush-400/30]="f !== filtroActivo()"
+              [class.text-zinc-400]="f !== filtroActivo()"
+              [class.hover:border-gold-400/60]="f !== filtroActivo()"
+              [class.hover:text-gold-300]="f !== filtroActivo()"
+            >
+              {{ f }}
+            </button>
+          }
+        </div>
+
+        <!-- Grilla de tragos/licuados -->
+        @if(itemsMostrados().length > 0) {
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+            @for(item of itemsMostrados(); track item.id) {
+              <article
+                class="group relative flex flex-col overflow-hidden rounded-2xl border border-blush-400/15 bg-zinc-900/80 shadow-lg shadow-black/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-blush-400/40 hover:shadow-xl hover:shadow-blush-400/15"
+              >
+                <!-- Foto del trago -->
+                <div class="relative aspect-[4/3] overflow-hidden bg-zinc-950">
+                  @if(item.image && !imagenRota(item.id)) {
+                    <img
+                      [src]="item.image"
+                      [alt]="item.name"
+                      loading="lazy"
+                      class="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                      (error)="marcarImagenRota(item.id)"
+                    />
+                  } @else {
+                    <!-- Si no hay foto, muestro el fondo elegante con 🍸 -->
+                    <div class="absolute inset-0 grid place-items-center bg-gradient-to-br from-zinc-800/80 via-zinc-900 to-zinc-950">
+                      <span class="text-6xl opacity-15 transition-opacity duration-500 group-hover:opacity-30" aria-hidden="true">🍸</span>
+                    </div>
+                  }
+
+                  <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent" aria-hidden="true"></div>
+
+                  <!-- Badge de categoría -->
+                  <span class="absolute top-3 left-3 rounded-full border px-2.5 py-1 text-[0.62rem] font-bold tracking-[0.14em] uppercase backdrop-blur-md {{ badgeClass(item.category) }}">
+                    {{ item.category }}
+                  </span>
+
+                  <!-- Badge "Nuevo" -->
+                  @if(item.new) {
+                    <span class="absolute top-3 right-3 rounded-full bg-red-600/90 px-2.5 py-1 text-[0.62rem] font-bold tracking-[0.14em] text-white uppercase backdrop-blur-md">
+                      Nuevo
+                    </span>
+                  }
+                </div>
+
+                <!-- Info del trago -->
+                <div class="flex flex-1 flex-col p-5 sm:p-6">
+                  <h2 class="font-serif text-2xl font-bold leading-tight tracking-wide text-zinc-50 transition-colors duration-300 group-hover:text-blush-300">
+                    {{ item.name }}
+                  </h2>
+
+                  @if(item.description) {
+                    <p class="mt-2 text-sm leading-relaxed text-zinc-400">{{ item.description }}</p>
+                  }
+
+                  <!-- Precio -->
+                  <div class="mt-auto flex items-end justify-between pt-5">
+                    <span class="h-px w-10 self-center bg-gradient-to-r from-gold-500/70 to-transparent" aria-hidden="true"></span>
+                    <span class="text-2xl font-extrabold tracking-tight text-gold-400 tabular-nums sm:text-3xl">
+                      {{ formatPrice(item.price) }}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        } @else {
+          <p class="mt-6 text-center text-sm text-zinc-500">No hay productos en esta sección todavía.</p>
+        }
+      </main>
+
+      <!-- Footer -->
+      <!-- CAMBIAR: el texto del footer se edita en menu.json, campo "footer" -->
+      <footer class="border-t border-white/[0.06] py-10 text-center">
+        <p class="text-sm text-zinc-400">{{ config().footer }}</p>
+        <p class="mt-2 text-xs tracking-wide text-zinc-600">
+          {{ config().barName }} · Barra de tragos móvil
+        </p>
+      </footer>
+    }
+  </div>
+</div>

@@ -1,130 +1,147 @@
 {
   "config": {
     "barName": "Alto Trago",
-    "tagline": "Barra de tragos móvil",
+    "logo": "assets/tragos/logo.jpg",
     "currency": "$",
-    "logoPath": "logo/altoTragoLogo1.jpg",
-    "heroImage": "/assets/tragos/hero.jpg",
-    "footerMessage": "¡Gracias por tu visita!"
+    "footer": "¡Gracias por tu visita!"
   },
-  "drinks": [
+  "items": [
     {
+      "id": 1,
       "name": "Fernet Branca",
       "description": "El clásico de la casa, bien frío",
       "price": 8000,
       "category": "Tragos"
     },
     {
+      "id": 2,
       "name": "Gancia",
       "description": "Gancia bien fría",
       "price": 7000,
       "category": "Tragos",
-      "image": "/assets/tragos/gancia-spritz.jpg"
+      "image": "assets/tragos/gancia-spritz.jpg"
     },
     {
+      "id": 3,
       "name": "Vodka con Sprite",
       "description": "Vodka con Sprite",
       "price": 8000,
       "category": "Tragos",
-      "image": "/assets/tragos/VodkaConSprite.jpg"
+      "image": "assets/tragos/VodkaConSprite.jpg"
     },
     {
+      "id": 4,
       "name": "Vino Tinto con gaseosa",
       "description": "Vino tinto con gaseosa",
       "price": 4000,
       "category": "Tragos"
     },
     {
+      "id": 5,
       "name": "Vino Dilema Dulce",
       "description": "Dulce, con frutos rojos y Sprite",
       "price": 7000,
       "category": "Tragos"
     },
     {
+      "id": 6,
       "name": "Daiquiri de Frutilla",
       "description": "Daiquiri de frutilla",
       "price": 8000,
       "category": "Tragos"
     },
     {
+      "id": 7,
       "name": "Daiquiri de Ananá y Durazno",
       "description": "Daiquiri de ananá o durazno",
       "price": 7000,
       "category": "Tragos"
     },
     {
+      "id": 8,
       "name": "Vino Colón",
       "description": "Con frutos rojos y Sprite opcional",
       "price": 9000,
       "category": "Tragos"
     },
     {
+      "id": 9,
       "name": "Vodkapaff",
       "description": "Caramelos Flynn Paff, vodka y Sprite",
       "price": 8000,
       "category": "Tragos"
     },
     {
+      "id": 10,
       "name": "Campari",
       "description": "Naranja exprimida, gaseosa pomelo o Sprite",
       "price": 8000,
       "category": "Tragos",
-      "tag": "Nuevo"
+      "new": true
     },
     {
+      "id": 11,
       "name": "Cuba Libre",
       "description": "Ron blanco, jugo de limón y coca cola",
       "price": 8000,
       "category": "Tragos"
     },
     {
+      "id": 12,
       "name": "Licuado de Frutilla",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 6000,
       "category": "Licuados"
     },
     {
+      "id": 13,
       "name": "Licuado de Durazno",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 5000,
       "category": "Licuados"
     },
     {
+      "id": 14,
       "name": "Licuado de Ananá",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 5000,
       "category": "Licuados"
     },
     {
+      "id": 15,
       "name": "Licuado de Banana",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 5000,
       "category": "Licuados"
     },
     {
+      "id": 16,
       "name": "Daikiri de Frutilla",
       "description": "Daikiri de frutilla",
       "price": 6000,
-      "category": "Especiales"
+      "category": "Tragos"
     },
     {
+      "id": 17,
       "name": "Daikiri de Ananá",
       "description": "Daikiri de ananá",
       "price": 5000,
-      "category": "Especiales"
+      "category": "Tragos"
     },
     {
+      "id": 18,
       "name": "Daikiri de Durazno",
       "description": "Daikiri de durazno",
       "price": 5000,
-      "category": "Especiales"
+      "category": "Tragos"
     },
     {
+      "id": 19,
       "name": "Frappé de Oreo",
       "description": "Oreos, leche, azúcar, salsa opcional, crema batida y hielo",
       "price": 6000,
-      "category": "Especiales",
-      "tag": "Nuevo"
+      "category": "Licuados",
+      "new": true
     }
   ]
 }

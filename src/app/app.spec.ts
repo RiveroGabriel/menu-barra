@@ -2,44 +2,43 @@ import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
-import { MenuPage } from './pages/menu-page/menu-page';
+import { MenuComponent } from './menu/menu.component';
 
-describe('MenuPage', () => {
+describe('MenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuPage],
+      imports: [MenuComponent],
       providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     }).compileComponents();
   });
 
-  it('should create the page', () => {
-    const fixture = TestBed.createComponent(MenuPage);
+  it('should create the menu page', () => {
+    const fixture = TestBed.createComponent(MenuComponent);
     expect(fixture.componentInstance).toBeTruthy();
   });
 
   it('should load menu.json and render the bar name', async () => {
-    const fixture = TestBed.createComponent(MenuPage);
-    fixture.detectChanges();
+    const fixture = TestBed.createComponent(MenuComponent);
+    fixture.detectChanges(); // arranca la carga del menú
 
     const http = TestBed.inject(HttpTestingController);
     http
-      .expectOne('menu.json')
+      .expectOne('assets/menu.json')
       .flush({
         config: {
           barName: 'Alto Trago',
-          tagline: 'Barra de tragos móvil',
+          logo: 'assets/tragos/logo.jpg',
           currency: '$',
-          logoPath: 'logo/altoTragoLogo.png',
-          heroImage: '/assets/tragos/hero.jpg',
-          footerMessage: '',
+          footer: '',
         },
-        drinks: [],
+        items: [],
       });
 
     await fixture.whenStable();
-    fixture.detectChanges();
+    fixture.detectChanges(); // renderiza el menú cargado
+
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('app-header')?.innerHTML).toContain('Alto Trago');
+    expect(compiled.textContent).toContain('Alto Trago');
     http.verify();
   });
 });

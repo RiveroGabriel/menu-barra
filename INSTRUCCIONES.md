@@ -1,176 +1,110 @@
-# 🍸 Alto Trago — Menú Digital
+# 🍸 Alto Trago - Menú Digital
 
-Menú web para tu barra de tragos móvil: logo arriba, carta con foto por trago, precio dorado. Vos manejás todo desde **un JSON y dos carpetas** — nunca tocás código.
+Menú web para tu barra de tragos móvil. Ahora es **un solo componente**: todo se controla desde `public/assets/menu.json` y la carpeta de fotos.
+
+> 📖 También tenés el `README.md` con la misma info en formato más largo.
 
 ---
 
-## 1. Uso diario (lo único que necesitás)
+## Lo único que necesitás saber
 
 | Quiero... | Hago esto |
 |---|---|
 | Ver el menú | `npm start` → http://localhost:4200 |
-| Cambiar precios / tragos | Edito `public/menu.json` → recargo con F5 |
+| Cambiar precios / tragos | Edito `public/assets/menu.json` → recargo con F5 |
 | Subir fotos de tragos | Copio las imágenes a `public/assets/tragos/` |
-| Cambiar mi logo | Reemplazo `public/logo/altoTragoLogo.png` |
+| Cambiar el logo | Reemplazo `public/assets/tragos/logo.jpg` |
 
 ---
 
-## 2. Estructura del proyecto (qué es cada cosa)
+## Estructura simple
 
 ```
 public/
-├── menu.json                  ← ⭐ TRAGOS, PRECIOS, NOMBRE DEL BAR (editás acá)
-├── logo/
-│   └── altoTragoLogo.png      ← tu logo
-└── assets/tragos/             ← fotos de los tragos + hero.jpg
+└── assets/
+    ├── menu.json          ← ⭐ TRAGOS, PRECIOS, NOMBRE DEL BAR (editás acá)
+    └── tragos/            ← fotos de los tragos + logo.jpg
 
 src/app/
-├── app.ts / app.html          → arranque mínimo, solo <router-outlet>
-├── app.routes.ts              → ruta '' → MenuPage
-├── app.config.ts              → Router + HttpClient
-├── models/menu.model.ts       → interfaces (Drink, MenuConfig, MenuData)
-├── services/menu.service.ts   ← ⭐ acá se cambia JSON por API real
-├── pages/menu-page/           → página completa: loading/error/carta/footer
-└── components/
-    ├── header/                → tu logo centrado
-    ├── hero/                  → foto grande (aparece sola cuando subas hero.jpg)
-    └── menu-card/             → tarjeta individual (foto 4:3, badge, precio)
+├── app.ts                 → arranque mínimo
+├── app.routes.ts          → carga el menú al entrar
+├── app.config.ts          → Router + HttpClient
+└── menu/
+    ├── menu.component.ts  ← ⭐ UN SOLO componente con todo
+    ├── menu.component.html
+    ├── menu.service.ts    ← lee el menu.json
+    └── menu.model.ts      ← define la forma del menú
 ```
 
 ---
 
-## 3. Cargar un trago nuevo
+## Agregar un trago nuevo
 
-1. Foto (opcional ya que sin foto se ve un fondo elegante): subila a `public/assets/tragos/`, ej. `campari.jpg`
-2. Agregá el bloque en `"drinks"` dentro de `public/menu.json`:
+1. (Opcional) Subí la foto a `public/assets/tragos/`, ej. `fernet.jpg`.
+2. Agregá el bloque dentro de `"items"` en `public/assets/menu.json`:
 
 ```json
 {
-  "name": "Campari Naranja",
-  "description": "Campari, jugo de naranja y hielo",
-  "price": 6500,
-  "category": "Clásicos",
-  "image": "/assets/tragos/campari.jpg"
+  "id": 20,
+  "name": "Fernet Branca",
+  "description": "El clásico de la casa, bien frío",
+  "price": 8000,
+  "category": "Tragos",
+  "image": "assets/tragos/fernet.jpg",
+  "new": false
 }
 ```
 
-Recargá la página y aparece solo.
-
-### Campos de cada trago
-
-| Campo | Obligatorio | Qué es |
-|---|---|---|
-| `name` | ✅ | Nombre del trago |
-| `description` | ✅ | Ingredientes / detalle corto |
-| `price` | ✅ | Número sin símbolo (`5500`, no `$5500`) |
-| `category` | ❌ | Badge de color (ver tabla) |
-| `image` | ❌ | Ruta de la foto |
-
-### ⚠️ Reglas del JSON
-
-- Separá tragos con coma `,`, pero **no pongas coma después del último**.
-- Todo texto entre comillas dobles `"así"`.
-- Si algo falla, la web muestra "No se pudo cargar el menú" en vez de romperse. Validá en https://jsonlint.com
-
-### 🏷️ Colores de badges según categoría
-
-| Escribí la categoría igual a: | Badge |
-|---|---|
-| `Tragos` | Dorado |
-| `Licuados` | Celeste/turquesa |
-| `Especiales` | Rosa/fucsia |
-
-Otra categoría → badge gris. Para darle color a una nueva: editá el mapa `BADGE_COLORS` en `src/app/components/menu-card/menu-card.ts`.
-
-### 🔀 Las dos tarjetas de filtro (Con alcohol / Sin alcohol)
-
-Arriba de la carta hay dos botones grandes: **🍹 Con alcohol** y **🥤 Sin alcohol**.
-
-La regla: **`Licuados` entra en "Sin alcohol"; todo lo demás (`Tragos`, `Especiales`) entra en "Con alcohol".** Si mañana agregás otra categoría sin alcohol, sumala al conjunto `SIN_ALCOHOL` en `src/app/pages/menu-page/menu-page.ts`.
-
-### 🆕 Marcar un trago como "Nuevo"
-
-Agregale `"tag": "Nuevo"` al trago en `menu.json` — aparece como etiqueta roja en la esquina de la foto.
-
-### 📑 Secciones de la carta
-
-La página agrupa los tragos en secciones con título dorado: **Tragos → Licuados → Daikiris y Especiales**. El orden y los nombres se definen en la constante `SECTIONS` de `src/app/pages/menu-page/menu-page.ts`.
+**Reglas del JSON:**
+- `id`: tiene que ser único.
+- `category`: `"Tragos"`, `"Licuados"` o `"Especiales"`.
+- `new`: si lo ponés `true`, aparece en el botón **Nuevos**.
+- `image`: opcional. Si no va, se ve el fondo con 🍸.
+- No pongas coma después del último objeto de una lista.
 
 ---
 
-## 4. Config general del bar
+## Los 3 botones
 
-En `public/menu.json`, sección `config`:
+Arriba de la carta hay 3 botones: **Tragos**, **Licuados**, **Nuevos**.
+
+- **Tragos / Licuados**: filtran por `category`.
+- **Nuevos**: muestra todo lo que tenga `"new": true`.
+
+Si querés agregar otro botón (por ejemplo "Especiales"), editá:
+
+`src/app/menu/menu.component.ts`:
+```ts
+filtros: Filtro[] = ['Tragos', 'Licuados', 'Especiales', 'Nuevos'];
+```
+
+---
+
+## Config general del bar
 
 ```json
 "config": {
   "barName": "Alto Trago",
-  "tagline": "Barra de tragos móvil",
+  "logo": "assets/tragos/logo.jpg",
   "currency": "$",
-  "logoPath": "logo/altoTragoLogo1.jpg",
-  "heroImage": "/assets/tragos/hero.jpg",
-  "footerMessage": "¡Gracias por tu visita!"
+  "footer": "¡Gracias por tu visita!"
 }
 ```
 
-> 📌 El logo se conecta SOLO con `logoPath`: apuntalo al nombre del archivo que esté en `public/logo/`.
-
 ---
 
-## 5. Fotos
-
-- Carpeta: `public/assets/tragos/`
-- **Foto grande** (hero): se llama `hero.jpg` — mientras no exista, esa sección queda oculta sola.
-- **Tarjetas**: horizontal, se ven en proporción 4:3, mínimo 800x600 px.
-- Comprimí las fotos para que carguen rápido con QR: https://squoosh.app (<300 KB). El logo ya está comprimido (188 KB ✅).
-
----
-
-## 6. Colores y tipografía
-
-Todo sale de `src/styles.css`, sección `@theme`:
-
-```css
---color-gold-200 ... --color-gold-600;   /* dorado: brillos, precios, marcos */
---font-sans: -apple-system, 'Inter', ... /* estilo Apple: en iPhone usa la fuente nativa de Apple */
-```
-
-La tipografía de todo el sitio es estilo Apple/iPhone: en iPhone/iPad/Mac se ve la fuente nativa de Apple (San Francisco) automáticamente; en Android y PC se usa Inter, que es casi idéntica.
-
-Sacá los códigos de color de tu logo en https://imagecolorpicker.com
-
----
-
-## 7. Pasar de JSON a API real (cuando tengas backend)
-
-Tocás **un solo archivo**: `src/app/services/menu.service.ts`
-
-```ts
-getMenu(): Observable<MenuData> {
-  // return this.http.get<MenuData>('menu.json');
-  return this.http.get<MenuData>('https://tu-api.com/api/tragos');
-}
-```
-
-La API debe devolver el mismo formato que `menu.json`. La página, tarjetas y diseño no cambian nada.
-
----
-
-## 8. Publicarlo online
+## Subir a internet
 
 ```bash
 npm run build
 ```
 
-Genera `dist/menu-barra/browser`. Subilo gratis arrastrando la carpeta a **netlify.com/drop** (o Vercel/Firebase). Con la URL generás un QR gratis para tus mesas.
-
-> Cuando cambies precios más adelante: editás `menu.json` → `npm run build` → subís `dist` otra vez.
+Subí la carpeta `dist/menu-barra/browser` a Netlify/Vercel.
 
 ---
 
-## 9. Si VS Code muestra cosas en rojo
+## Si algo se ve mal
 
-1. Cerrá todas las pestañas abiertas y volvé a abrir el proyecto (evita guardar versiones viejas encima de las nuevas).
-2. `Ctrl+Shift+P` → **"Developer: Reload Window"**.
-3. Actualizá la extensión **Angular Language Service** (`Ctrl+Shift+X`).
-4. La prueba definitiva: `npm run build`. Si termina sin errores, el código está bien aunque el editor marque algo.
+1. Cerrá todas las pestañas de VS Code y recargá la ventana (`Ctrl+Shift+P` → "Developer: Reload Window").
+2. Corré `npm run build`. Si termina sin errores, el código está bien.
+3. Revisá que el JSON sea válido en https://jsonlint.com.

@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
 
   // Datos por defecto (se sobreescriben cuando llega el JSON)
   config = signal({
-    barName: 'Alto Trago',
+    barName: 'Carta',
     logo: 'assets/tragos/logo.jpg',
     currency: '$',
     footer: '¡Gracias por tu visita!',

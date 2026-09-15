@@ -1,6 +1,6 @@
 {
   "config": {
-    "barName": "Alto Trago",
+    "barName": "Carta",
     "logo": "assets/tragos/logo.jpg",
     "currency": "$",
     "footer": "¡Gracias por tu visita!"
@@ -11,7 +11,8 @@
       "name": "Fernet Branca",
       "description": "El clásico de la casa, bien frío",
       "price": 8000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/fernet-coca.jpg"
     },
     {
       "id": 2,
@@ -32,44 +33,60 @@
     {
       "id": 4,
       "name": "Vino Tinto con gaseosa",
-      "description": "Vino tinto con gaseosa",
+      "description": "Vino tinto con gaseosa o Soda",
       "price": 4000,
-      "category": "Tragos"
+      "category": "Tragos",
+       "image": "assets/tragos/vino-gaseosa.jpg"
     },
     {
       "id": 5,
       "name": "Vino Dilema Dulce",
       "description": "Dulce, con frutos rojos y Sprite",
       "price": 7000,
-      "category": "Tragos"
+      "category": "Tragos",
+       "image": "assets/tragos/vino-dilema-dulce.jpg"
     },
     {
       "id": 6,
       "name": "Daiquiri de Frutilla",
       "description": "Daiquiri de frutilla",
       "price": 8000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/daikiri-frutilla.jpg"
     },
     {
       "id": 7,
       "name": "Daiquiri de Ananá y Durazno",
       "description": "Daiquiri de ananá o durazno",
       "price": 7000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/daikiri-anana.jpg"
+    },
+        {
+      "id": 7,
+      "name": "Daiquiri de Ananá y Durazno",
+      "description": "Daiquiri de ananá o durazno",
+      "price": 7000,
+      "category": "Tragos",
+      "image": "assets/tragos/daikiri-durazno.jpg"
     },
     {
       "id": 8,
       "name": "Vino Colón",
       "description": "Con frutos rojos y Sprite opcional",
       "price": 9000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/vino-colon.jpg"
+
     },
     {
       "id": 9,
       "name": "Vodkapaff",
       "description": "Caramelos Flynn Paff, vodka y Sprite",
       "price": 8000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/flippaf-sprite.jpg",
+      "new": true
     },
     {
       "id": 10,
@@ -77,63 +94,72 @@
       "description": "Naranja exprimida, gaseosa pomelo o Sprite",
       "price": 8000,
       "category": "Tragos",
-      "new": true
+      "image": "assets/tragos/campari-sprite.jpg"
     },
     {
       "id": 11,
       "name": "Cuba Libre",
       "description": "Ron blanco, jugo de limón y coca cola",
       "price": 8000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/ron-cola.jpg"
     },
     {
       "id": 12,
       "name": "Licuado de Frutilla",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 6000,
-      "category": "Licuados"
+      "category": "Licuados",
+      "image": "assets/tragos/licuado-frutilla.jpg"
     },
     {
       "id": 13,
       "name": "Licuado de Durazno",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 5000,
-      "category": "Licuados"
+      "category": "Licuados",
+      "image": "assets/tragos/licuado-durazno.jpg"
     },
     {
       "id": 14,
       "name": "Licuado de Ananá",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 5000,
-      "category": "Licuados"
+      "category": "Licuados",
+      "image": "assets/tragos/licuado-anana.jpg"
     },
     {
       "id": 15,
       "name": "Licuado de Banana",
       "description": "Leche opcional, azúcar, salsa opcional y hielo",
       "price": 5000,
-      "category": "Licuados"
+      "category": "Licuados",
+      "image": "assets/tragos/licuado-banana.jpg"
     },
     {
       "id": 16,
       "name": "Daikiri de Frutilla",
       "description": "Daikiri de frutilla",
       "price": 6000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/daikiri-frutilla.jpg"
     },
     {
       "id": 17,
       "name": "Daikiri de Ananá",
       "description": "Daikiri de ananá",
       "price": 5000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/daikiri-anana.jpg"
     },
     {
       "id": 18,
       "name": "Daikiri de Durazno",
       "description": "Daikiri de durazno",
       "price": 5000,
-      "category": "Tragos"
+      "category": "Tragos",
+      "image": "assets/tragos/daikiri-durazno.jpg"
+
     },
     {
       "id": 19,
@@ -141,6 +167,7 @@
       "description": "Oreos, leche, azúcar, salsa opcional, crema batida y hielo",
       "price": 6000,
       "category": "Licuados",
+      "image": "assets/tragos/frappe-oreo.jpg",
       "new": true
     }
   ]
